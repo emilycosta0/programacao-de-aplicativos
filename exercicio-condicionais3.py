@@ -1,0 +1,11 @@
+compra = float(input("digite o valor total da compra: "))
+cupom = input("digite o cupom de desconto: ")
+
+if cupom == "DEV10" :
+    multiplicacao = compra * 0.10
+    valor_com_desconto = multiplicacao - compra
+    print("valor com desconto: ", valor_com_desconto)
+    
+else:
+    print("cupom invalido. Valor original R$", compra)
+
