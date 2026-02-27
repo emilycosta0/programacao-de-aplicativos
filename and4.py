@@ -3,6 +3,6 @@ codigo_secreto = int(input("digite seu codigo secreto: "))
 
 if nome_de_usuario == "admin" and codigo_secreto == 999:
     print ("Acesso liberado! Sistema online.")
-elif nome_de_usuario != "admin" and codigo_secreto != 999:
+else:
     print ("falha na autenticação! Alerta de segurança ligado. ")
     
