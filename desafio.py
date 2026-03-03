@@ -4,12 +4,12 @@ distancia_de_entrega = int(input("Digite a distância de entrega: "))
 cupom = input("Digite seu cupom: ")
 frete = 40.00
 
-if valor_total_da_compra >= 1000 and cupom == "S":
+if valor_total_da_compra >= 1000.0 and cupom == "S":
    multiplicacao = valor_total_da_compra * 0.20
    valor_com_desconto = multiplicacao - valor_total_da_compra
    print ("Parabéns! Você ganhou um mouse pad Gamer de brinde. ")
 
-elif valor_total_da_compra > 500 and valor_total_da_compra < 1000.00 == "S":
+elif valor_total_da_compra > 500.0 and valor_total_da_compra < 1000.00 == "S":
     multiplicacao = valor_total_da_compra * 0.10
     valor_com_desconto = valor_total_da_compra - multiplicacao 
 
