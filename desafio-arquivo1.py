@@ -19,13 +19,13 @@ def ler():
 
 def atualizar():
     ler()
-    alterar_destino = input("Digite o destino que você deseja alterar: ")
+    alterar_destino = int(input("Digite o destino que você deseja alterar: "))
     novo_destino = input("Novo destino: ")
 
     with open('viagens.txt', 'r') as arquivo:
         linhas = arquivo.readlines()
 
-    linhas [alterar_destino] = novo_destino + '\n'
+    linhas[alterar_destino] = novo_destino + '\n'
 
     with open('viagens.txt', 'w') as arquivo:
         arquivo.writelines(linhas)
@@ -34,7 +34,7 @@ def atualizar():
 
 def deletar():
     ler()
-    alterar_destino = input("Digite o destino que deseja excluir: ")
+    alterar_destino = int(input("Digite o destino que deseja excluir: "))
 
     with open('viagens.txt', 'r') as arquivo:
         linhas = arquivo.readlines()
