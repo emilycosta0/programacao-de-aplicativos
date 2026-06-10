@@ -1,29 +1,5 @@
 [
     {
-        "ID": 5,
-        "Nome": "Emily Costa",
-        "Telefone": "999999",
-        "Turma": "9A",
-        "Idade": 16,
-        "CPF": "11523467924"
-    },
-    {
-        "ID": 8,
-        "Nome": "Bianca",
-        "Telefone": "989255458",
-        "Turma": "9N",
-        "Idade": 16,
-        "CPF": "5465898435784"
-    },
-    {
-        "ID": 5,
-        "Nome": "Emily Costa",
-        "Telefone": "44988579804",
-        "Turma": "1A",
-        "Idade": 16,
-        "CPF": "11478100958"
-    },
-    {
         "ID": 6,
         "Nome": "Bianca Pereira",
         "Telefone": "9999999",

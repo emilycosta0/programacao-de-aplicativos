@@ -55,11 +55,11 @@ def atualizar():
     for aluno in alunos:
         if aluno['ID'] == id_busca:
             print(f"Editando dados de: {aluno['ID']}")
-            aluno['Nome'] = input(f"Novo Nome ({aluno['nome']}): ") or aluno['nome']
-            aluno['Telefone'] = input(f"Novo Telefone ({aluno['telefone']}): ") or aluno['telefone'] 
-            aluno['Turma'] = input(f"Nova Turma ({aluno['turma']}): ") or aluno['turma'] 
-            aluno['Idade'] = int(input(f"Nova Idade ({aluno['idade']}): ") or aluno['idade']) 
-            aluno['Cpf'] = input(f"Novo CPF ({aluno['cpf']}): ") or aluno['cpf'] 
+            aluno['Nome'] = input(f"Novo Nome ({aluno['Nome']}): ") or aluno['Nome']
+            aluno['Telefone'] = input(f"Novo Telefone ({aluno['Telefone']}): ") or aluno['Telefone'] 
+            aluno['Turma'] = input(f"Nova Turma ({aluno['Turma']}): ") or aluno['Turma'] 
+            aluno['Idade'] = int(input(f"Nova Idade ({aluno['Idade']}): ") or aluno['Idade']) 
+            aluno['CPF'] = input(f"Novo CPF ({aluno['CPF']}): ") or aluno['CPF'] 
 
             with open(banco_dados, 'w', encoding='utf-8') as arquivo:
                 json.dump(alunos, arquivo, indent=4, ensure_ascii=False)  
