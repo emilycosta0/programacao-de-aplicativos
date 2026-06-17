@@ -90,6 +90,7 @@ def excluir_aluno():
     conexao.close 
      
 atualizar_aluno()
+excluir_aluno()
 
 
 
