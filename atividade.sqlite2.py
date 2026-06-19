@@ -53,9 +53,6 @@ def listar_professores():
 def atualizar():
     conexao = sqlite3.connect('escola_demonstracao.db')
     cursor = conexao.cursor()
-
-    listar_professores()
-    
     id_busca = int(input("Digite o ID do professor para atualizar: "))
 
     cursor.execute(f'''SELECT * FROM professores WHERE id={id_busca}''')
@@ -85,39 +82,23 @@ def atualizar():
 def excluir():
     conexao = sqlite3.connect('escola_demonstracao.db')
     cursor = conexao.cursor()
-
-    atualizar()
-    
+    listar_professores()
     id_professor = int(input("Digite o ID do aluno que deseja excluir: "))
 
-    cursor.execute(f'''SELECT * FROM professores WHERE id={id_professor}''')
+    cursor.execute(f'''DELETE FROM professores
+                    WHERE id={id_professor}''')
+    print("Professor excluido!")
     conexao.commit()
     conexao.close()
 
-def menu():
-    opcao = 0
-    while opcao != "5" :
-        print("--------Cadastro de professores--------")
-        print("1. Cadastrar Professor")
-        print("2. Listar Professores")
-        print("3. Alterar Professor")
-        print("4. Excluir Professor")
-        print("5. Sair")
-        
-        opcao = input("Escolha uma opção: ")
-        
-        if opcao == '1':
-            cadastrar()
-        elif opcao == '2':
-            listar_professores()
-        elif opcao == '3':
-            atualizar()
-        elif opcao == '4':
-            excluir()
-        elif opcao == '5':
-            print("Cadastro encerrado!")
-            break
-        else:
-            print("Opção inválida! Tente novamente.")
+    
+while True:
+    print("--------Cadastro de professores--------")
+    print("1-Cadastar | 2-Listar | 3-Atualizar | 4-Excluir | 5-Sair")
+    opcao = input("Escolha uma opção: ")
+    if opcao == "1": cadastrar()
+    elif opcao == "2" : listar_professores()
+    elif opcao == "3" : atualizar()
+    elif opcao == "4" : excluir()
+    elif opcao == "5" : break
 
-menu()
