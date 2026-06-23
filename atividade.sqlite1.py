@@ -28,7 +28,7 @@ def cadastrar_aluno():
     id_professor = int(input("Digite o ID do professor: "))
 
     comando_inserir = f''' 
-                    INSERT INTO alunos (nome, telefone, turma, idade, cpf)
+                    INSERT INTO alunos (nome, telefone, turma, idade, cpf, id)
                     VALUES ('{nome_aluno}', '{telefone_aluno}', '{turma_aluno}', {idade_aluno}, '{cpf_aluno}', '{id_professor}')'''
 
     cursor.execute(comando_inserir)

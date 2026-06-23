@@ -15,6 +15,10 @@ def cadastrar():
                 cpf TEXT UNIQUE NOT NULL,
                 salario REAL,
                 escola TEXT NOT NULL
+                endereço TEXT
+                cidade TEXT
+                estado TEXT
+                
          )''')
     
     nome_prof = input("Digite o nome completo: ")
@@ -24,10 +28,14 @@ def cadastrar():
     cpf_prof = input("Digite o CPF: ")
     salario_prof = float(input("Digite o salário: "))
     escola_prof = input("Digite o nome da escola: ")
+    endereco_prof = input("Digite o endereço: ")
+    cidade_prof = input("Digite a cidade: ")
+    estado_prof = input("Digite o estado: ")
 
     comando_inserir = (f'''
                         INSERT INTO professores (nome, telefone, materia, idade, cpf, salario, escola)
-                        VALUES ('{nome_prof}', '{telefone_prof}', '{materia_prof}', {idade_prof}, '{cpf_prof}', '{salario_prof}', '{escola_prof}')''')
+                        VALUES ('{nome_prof}', '{telefone_prof}', '{materia_prof}', {idade_prof}, '{cpf_prof}',
+                        '{salario_prof}', '{escola_prof}', '{endereco_prof})', '{cidade_prof}', '{estado_prof}' ''')
                
     cursor.execute(comando_inserir)
     conexao.commit()
@@ -46,7 +54,7 @@ def listar_professores():
         print("Nenhum professor no cadastro!")
     else:
         for professor in todos_professores:
-            print(f"ID = {professor[0]}, Nome = {professor[1]}, Telefone = {professor[2]}, Materia = {professor[3]}, Idade = {professor[4]}, CPF = {professor[5]}, Salário = {professor[6]}, Escola = {professor[7]}") 
+            print(f"ID = {professor[0]}, Nome = {professor[1]}, Telefone = {professor[2]}, Materia = {professor[3]}, Idade = {professor[4]}, CPF = {professor[5]}, Salário = {professor[6]}, Escola = {professor[7]}, Endereço = {professor[8]}, Cidade = {professor[9]}, Estado = {professor[10]}") 
     conexao.close()
 
 
@@ -70,8 +78,11 @@ def atualizar():
         novo_cpf = input("Digite o novo CPF: ")
         novo_salario = float(input("Digite  o novo salário: "))
         nova_escola = input("Digite a nova escola: ")
+        novo_endereço = input("Digite o novo endereço: ")
+        nova_cidade = input("Digite a nova cidade: ")
+        novo_estado = input("Digite o novo estado: ")
 
-        comando = f'''UPDATE professores SET nome ='{novo_nome}', telefone ={novo_telefone}, materia ='{nova_materia}', idade={nova_idade}, cpf='{novo_cpf}', salario={novo_salario}, escola='{nova_escola}' WHERE id={id_busca}'''
+        comando = f'''UPDATE professores SET nome ='{novo_nome}', telefone ={novo_telefone}, materia ='{nova_materia}', idade={nova_idade}, cpf='{novo_cpf}', salario={novo_salario}, escola='{nova_escola}', endereço='{novo_endereço}', cidade='{nova_cidade}', estado='{novo_estado}' WHERE id={id_busca}'''
 
         cursor.execute(comando)
         conexao.commit()
