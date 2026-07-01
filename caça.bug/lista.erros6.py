@@ -1,6 +1,6 @@
 import sqlite3
 
-def buscar-professores(id_prof):
+def buscar_professores(id_prof):
     conexao = sqlite3.connect9('sistema_escola.db')
     cursor = conexao.cursor()
 
@@ -11,4 +11,4 @@ def buscar-professores(id_prof):
     cursor.execute("SELECT nome FROM professores WHERE id = ?", (id_prof,)) #virgula obragatoria em tupla com um unico elemneto
     resultado = cursor.fetchone()
     print(resultado)
-    conexao.close()
+    conexao.close() 
