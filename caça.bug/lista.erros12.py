@@ -1,6 +1,6 @@
 import sqlite3
 # o aluno criou a conexao fora das funções para "facilitar"
-# por que  isso quebra o sistema quando usamos multiplos arqivos (modulos)?
+# por que  isso quebra o sistema quando usamos multiplos arquivos (modulos)?
 
 def inserir_escola (nome):
     conexao = sqlite3.connect('sistema-escola.db')
