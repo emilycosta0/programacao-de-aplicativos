@@ -20,7 +20,7 @@ def buscar_dados_dinamicos(nome_tabela, id_registro):
 
 # O SQLite joga um erro de sintaxe operacional indicando que não aceita o caractere '?'. 
 # Não podemos parametrizar nomes de tabelas? Como resolver mantendo a segurança? 
-    # R= O caractere '?' não pode ser usado para nomes de tabela ou coluna. Ele serve apenas para valores
+    # R= O caractere '?' não pode ser usado para nomes de tabela ou coluna, ele serve só para valores
 
 	
    

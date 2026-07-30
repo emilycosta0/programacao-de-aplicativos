@@ -15,4 +15,4 @@ def cadastrar_professor(nome, cpf):
                     ) ''')
     
 
-# R= faltou o UNIQUE para identificar que o cpf é unico (só uma pessoa que tem)
+# R= faltou o 'UNIQUE' para identificar que o cpf é unico (só uma pessoa que tem)

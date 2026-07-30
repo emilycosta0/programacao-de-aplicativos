@@ -8,7 +8,7 @@ def buscar_professores(id_prof):
     # estamos passando a variavel, por que ocorre o erro?
     # R= o erro é que: para criar uma tupla com só um elemento é necessario colocar uma virgula 
     
-    cursor.execute("SELECT nome FROM professores WHERE id = ?", (id_prof,)) #virgula obragatoria em tupla com um unico elemneto
+    cursor.execute("SELECT nome FROM professores WHERE id = ?", (id_prof,)) #virgula obrigatoria em tupla com um unico elemneto
     resultado = cursor.fetchone()
     print(resultado)
     conexao.close() 

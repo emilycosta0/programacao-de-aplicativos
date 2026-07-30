@@ -14,4 +14,6 @@ def inserir_professor(nome, materia, cpf):
             conexao.close()
 
 # R= o erro é que tem um erro de digitação (INSERTO - INSERT)
-# e que o programa exibe o cpf incorretamente, por que o código mnada imprimir a mensagem independentemente do tipo de erro que aconteceu
+# e que o programa exibe o cpf incorretamente, por que o código mnada imprimir a mensagem independente do tipo de erro que aconteceu
+
+

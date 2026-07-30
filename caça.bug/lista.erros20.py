@@ -25,4 +25,4 @@ def cadastrar_escola_manual():
 	# Se rodar duas vezes com o ID 1, o programa fecha abruptamente (Crash). 
 	# Aplique a blindagem protetora necessária: 
     
-# o erro é que ao colocar um 'id' que ja existe na tabela, o SQlite gera um 'sqlite3.IntegrityError' por violar a chave primaria, encerrando o programa se não arrumar o erro.
+# o erro é que se colocar um 'id' que ja existe na tabela, o SQlite gera um 'sqlite3.IntegrityError' por violar a chave primaria, encerrando o programa se não arrumar o erro.

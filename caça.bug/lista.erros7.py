@@ -7,7 +7,7 @@ def cadastrar_turma(nome, id_serie, id_prof):
         cursor.execute("PRAGMA foreign_keys = ON;")
         cursor.execute("INSERT INTO turmas (nome_turma, id_serie, id_professor) VALUES (?,?,?)", (nome, id_serie, id_serie, id_prof))
     except sqlite3.IntegrityError:
-        print("Não exisyte o professor informado")
+        print("Não existe o professor informado")
         conexao.commit()
     finally:
         conexao.close()

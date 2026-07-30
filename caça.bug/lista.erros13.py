@@ -13,4 +13,4 @@ def verificar_registros():
 
     conexao.close() 
 # Por que o segundo print não mostra absolutamente nada no console? 
-# R= por que o fetchall( ) le e consome todos os registros da consulta do primeiro print, por isso o segundo retorna uma lista vazia ([ ])
+# R= por que o fetchall( ) le e consome todos os registros do primeiro print, por isso o segundo retorna uma lista vazia ([ ])
