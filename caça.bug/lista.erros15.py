@@ -9,7 +9,7 @@ def criar_tabela_turma():
     	CREATE TABLE IF NOT EXISTS turmas ( 
         	id INTEGER PRIMARY KEY AUTOINCREMENT, 
             nome_turma TEXT, 
-            id_serie, INTEGER
+            id_serie INTEGER,
         	FOREIGN KEY (id_serie) REFERENCES series(id) 
     	) 
 	''') 

@@ -12,7 +12,7 @@ def cadastrar_serie_seguro(nome, id_escola):
     except sqlite3.Error as e: 
         print("Erro técnico:", e) 
     finally: 
-        if conexao is not None:
-        conexao.close() 
+        if conexao:
+            conexao.close() 
 
 # R= Se 'sqlite3.connect()' nao der certo, 'conexao' não sera criada e 'conexao.close()' no finally ira gerar um 'NameError'

@@ -13,3 +13,5 @@ def listar_alunos_e_turmas():
     conexao.close()
 
 # R= o erro é que faltou o 'ON' para ligar as turmas com os alunos
+
+
