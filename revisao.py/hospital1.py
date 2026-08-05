@@ -54,12 +54,12 @@ def inserir_tabelas():
 
         if cursor.fetchone():   
 
-        comando_inserir = f'''
+            comando_inserir = f'''
                             INSERT INTO medicos (nome, crm, id_hospital)
                             VALUES ('{nome_medico}', '{crm_medico}', '{id_hospital}')'''
 
-        cursor.execute(comando_inserir)
-        conexao.commit()
+            cursor.execute(comando_inserir)
+            conexao.commit()
 
         else:
             print("Erro! Hospital não encontrado.")
@@ -67,6 +67,7 @@ def inserir_tabelas():
     except sqlite3.Error as erro:
             print("Erro:", erro)
 
-    finally conexao.close():
+    finally: 
+        conexao.close()
 
 inserir_tabelas()
