@@ -17,8 +17,8 @@ def criar_tabelas():
         cursor.execute(''' CREATE TABLE IF NOT EXISTS arenas_digitais(
                             id INTEGER PRIMARY KEY AUTOINCREMENT,
                             nome_servidor TEXT,
-                            id_ligas INTEGER,
-                            FOREING KEY (id_ligas) REFERENCES liga_games(id)
+                            id_liga INTEGER,
+                            FOREIGN KEY (id_liga) REFERENCES liga_games(id)
                             )''')
 
         conexao.commit()
@@ -31,19 +31,21 @@ criar_tabelas()
 def cadastrar_ligas():
     try:
         conexao = sqlite3.connect("torneio.db")
-        cursor.execute("PRAGMA foreign_keys = ON")
         cursor = conexao.cursor()
-
+        cursor.execute("PRAGMA foreign_keys = ON")
+        
         nome = input("Digite o nome da liga: ")
         empresa = input("Empresa/Publisher: ")
 
         comando_inserir = f'''
                             INSERT INTO liga_games (nome_liga, empresa_publisher)
-                            VALUES ('{nome}', '{empresa}')'''
+                            VALUES ('{nome}', '{epresa}')'''
+                            
 
         conexao.commit()
 
         print("Liga cadastrada!")
+        
 
     except sqlite3.Error as erro:
         print("Erro:", erro)
@@ -59,6 +61,7 @@ def listar_ligas():
 
         cursor.execute("SELECT * FROM liga_games")
         ligas = cursor.fetchall()
+        print("Dados encontrados:", ligas)
 
         if ligas:
             for liga in ligas:
@@ -80,7 +83,7 @@ def atualizar_ligas():
         cursor = conexao.cursor()
 
         id_liga = int(input("Digite o id da liga: "))
-        nome = input("Digite o novo id da liga: ")
+        nome = input("Digite o novo nome da liga: ")
         empresa = input("Digite a nova empresa: ")
 
         cursor.execute("SELECT * FROM liga_games WHERE id = ?", (id_liga,))
@@ -120,21 +123,18 @@ def excluir_ligas():
         cursor.execute(
                 "SELECT * FROM arenas_digitais WHERE id_liga = ?",(id_liga,))
          
-        if curosr.fetchone():
+        if cursor.fetchone():
             print("Não é possivel excluir esta liga.")
             print("Existem arenas vinculadas a ela.")
 
         else:
-            cursor.execute("DELETE FROM ligas_game WHERE id = ?", (id_liga,))
+            cursor.execute("DELETE FROM liga_games WHERE id = ?", (id_liga,))
 
             conexao.commit()
 
-            print("Liga excluida!")
-
-        else:
-            print("Liga não encontrada.")    
+            print("Liga excluida!")    
    
-   except ValueError:
+    except ValueError:
         print("Digite apenas numeros no ID.")
 
     except sqlite3.Error as erro:
@@ -148,22 +148,22 @@ def excluir_ligas():
 def cadastrar_arenas():
     try:
         conexao = sqlite3.connect("torneio.db")
-        cursor.execute("PRAGMA foreign_keys = ON")
         cursor = conexao.cursor()
-
+        cursor.execute("PRAGMA foreign_keys = ON")
+        
         nome = input("Digite o nome do servidor: ")
         id_liga = input("Digite o ID da liga: ")
 
-        comando_execute (" SELECT * FROM ligas_games WHERE id = ?", (id_liga))
+        cursor.execute (" SELECT * FROM liga_games WHERE id = ?", (id_liga,))
 
 
         if cursor.fetchone():
 
-            comando_inserir = f'''
+            cursor.execute = f'''
                             INSERT INTO arenas_digitas (nome_servidor, id_liga)
                             VALUES ('{nome}', '{id_liga}')'''
 
-            conexao.commit():
+            conexao.commit()
 
             print("Arena cadastrada!")
 
@@ -224,9 +224,6 @@ def atualizar_arenas():
             print("Arena atualizada!")
 
         else:
-            print("Liga não encontrada!")
-
-        else:
             print("Arena não encontrada!")
 
     except ValueError:
@@ -247,21 +244,20 @@ def excluir_arenas():
         id_arena = int(input("Digite o ID da arena: "))
 
         cursor.execute(
-                "SELECT * FROM arenas_digitas WHERE id_liga = ?",(id_arena,))
+                "SELECT * FROM arenas_digitais WHERE id = ?",(id_arena,))
 
         if cursor.fetchone():
 
             cursor.execute(
-                    "DELETE FROM arenas_digitais WHERE id_liga = ?", (id_arena,))
+                    "DELETE FROM arenas_digitais WHERE id = ?", (id_arena,))
 
-        conexao.commit()
-
+            conexao.commit()
             print("Arena excluida!")
 
         else:
             print("Arena não encontrada.")    
    
-   except ValueError:
+    except ValueError:
         print("Digite apenas numeros no ID.")
 
     except sqlite3.Error as erro:
@@ -318,11 +314,11 @@ def menu():
             else:
                 print("Opção invalida, tente novamente!")
 
-    except ValueError:
-        print("Digite apenas numeros no ID.")
+        except ValueError:
+            print("Digite apenas numeros no ID.")
 
-    except sqlite3.Error as erro:
-        print("Erro:", erro)
+        except sqlite3.Error as erro:
+            print("Erro:", erro)
 
 criar_tabelas()
 menu()
