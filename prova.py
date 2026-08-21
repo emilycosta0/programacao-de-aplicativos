@@ -28,15 +28,13 @@ def criar_tabelas():
 criar_tabelas()
 
 
-def cadastrar_ligas():
+def cadastrar_ligas(nome, empresa):
     try:
         conexao = sqlite3.connect("torneio.db")
         cursor = conexao.cursor()
         cursor.execute("PRAGMA foreign_keys = ON")
         
-        nome = input("Digite o nome da liga: ")
-        empresa = input("Empresa/Publisher: ")
-
+        
         comando_inserir = f'''
                             INSERT INTO liga_games (nome_liga, empresa_publisher)
                             VALUES ('{nome}', '{epresa}')'''
@@ -44,7 +42,7 @@ def cadastrar_ligas():
 
         conexao.commit()
 
-        print("Liga cadastrada!")
+        return "Liga cadastrada!"
         
 
     except sqlite3.Error as erro:
@@ -77,15 +75,12 @@ def listar_ligas():
         conexao.close()        
 
 
-def atualizar_ligas():
+def atualizar_ligas(id_liga, nome, empresa):
     try:
         conexao = sqlite3.connect("torneio.db")
         cursor = conexao.cursor()
 
-        id_liga = int(input("Digite o id da liga: "))
-        nome = input("Digite o novo nome da liga: ")
-        empresa = input("Digite a nova empresa: ")
-
+        
         cursor.execute("SELECT * FROM liga_games WHERE id = ?", (id_liga,))
         
 
@@ -97,7 +92,7 @@ def atualizar_ligas():
                  ''', (nome, empresa, id_liga)) 
 
             conexao.commit()
-            print("Liga atualizada!")
+            return "Liga atualizada!"
 
         else:
             print("Liga não encontrada!")
@@ -112,13 +107,12 @@ def atualizar_ligas():
         conexao.close()
 
 
-def excluir_ligas():
+def excluir_ligas(id_liga):
     try:
         conexao = sqlite3.connect("torneio.db")
         cursor = conexao.cursor()
         cursor.execute("PRAGMA foreign_keys = ON")
 
-        id_liga = input("Digite o ID da liga: ")
 
         cursor.execute(
                 "SELECT * FROM arenas_digitais WHERE id_liga = ?",(id_liga,))
@@ -132,7 +126,7 @@ def excluir_ligas():
 
             conexao.commit()
 
-            print("Liga excluida!")    
+            return "Liga excluida!"   
    
     except ValueError:
         print("Digite apenas numeros no ID.")
@@ -283,16 +277,22 @@ def menu():
 
             opcao = int(input("Escolha uma opção: "))
 
-            if opcao == 1:
+            if opcao == 1: 
+                nome = input("Digite o nome da liga: ")
+                empresa = input("Empresa/Publisher: ")
                 cadastrar_ligas()
 
             elif opcao == 2:
                 listar_ligas()
 
             elif opcao == 3:
+                id_liga = int(input("Digite o id da liga: "))
+                nome = input("Digite o novo nome da liga: ")
+                empresa = input("Digite a nova empresa: ")
                 atualizar_ligas()
 
             elif opcao == 4:
+                id_liga = input("Digite o ID da liga: ")
                 excluir_ligas()
 
             elif opcao == 5:
@@ -321,9 +321,12 @@ def menu():
             print("Erro:", erro)
 
 criar_tabelas()
-menu()
+#menu()
 
+assert cadastrar_ligas("Mario", "Nintendo") ==  "Liga cadastrada!"
 
+assert atualizar_ligas("PlayStation", "Sony") == "Liga atualizada!" 
+assert excluir_ligas("PlayStation", "Sony") == "Liga excluida!"
 
 
 
