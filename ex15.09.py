@@ -4,11 +4,15 @@ def busca_sequencial():
 
     numero = int(input("Digite o número que deseja procurar: "))
 
+    encontrado = False
+
     for i in range(len(vetor)):
         if vetor[i] == numero:
             print("Número encontrado no índice:", i)
-
-    print("Número não encontrado!")
+            encontrado = True
+            break
+    if not encontrado:
+        print("Número não encontrado!")
 
 busca_sequencial()
 
@@ -16,8 +20,8 @@ busca_sequencial()
 def contar_valor():
     vetor = [10, 20, 10, 30, 10, 40, 50, 10]
 
-    numero = 0
-
+    numero = int(input("Digite o número que deseja contar: "))
+    contador = 0
     for i in range(len(vetor)):
         if vetor[i] == numero:
             contador += 1
@@ -34,7 +38,7 @@ def maior_numero():
     posicao = 0
 
     for i in range(1, len(vetor)):
-        if vetor[1] > maior:
+        if vetor[i] > maior:
             maior = vetor[i]
             posicao = i
 
@@ -116,7 +120,7 @@ busca_binaria()
 
 # 7-BUSCA BINARIA DE UMA PALAVRA
 def buscar_palavra():
-    palavras = ["emily", "mayra", "bianca", "gabi", "paloma", "lara" ]
+    palavras = ["bianca", "emily", "gabi", "lara", "mayra", "paloma" ]
 
     palavra = input("Digite a palavra: ").lower()
      
@@ -172,7 +176,7 @@ def busca_binaria_comparacoes():
 busca_binaria_comparacoes()
 
 # 9-DESCOBRIR A POSIÇÃO ONDE UM NUMERO DEVE SER INSERIDO
-def posicao_insecao():
+def posicao_insercao():
     vetor = [10, 20, 30, 40, 50, 60]
 
     numero = int(input("Digite o número que deseja inserir: "))
@@ -190,9 +194,9 @@ def posicao_insecao():
         else:
             fim = meio
 
-    print("O número deve serinserido na posição:", inicio)
+    print("O número deve ser inserido na posição:", inicio)
 
-posicao_insecao()
+posicao_insercao()
 
 # 10- COMPARAR BUSCA SEQUENCIAL E BUSCA BINARIA
 def busca_sequencial(vetor, numero):
@@ -202,7 +206,7 @@ def busca_sequencial(vetor, numero):
 
         comparacoes += 1
 
-        if vetor[1] == numero:
+        if vetor[i] == numero:
             return i, comparacoes
 
     return -1, comparacoes 
